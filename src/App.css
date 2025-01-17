@@ -1,0 +1,224 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  height: 100%;
+}
+
+.dark {
+  background-color: #121212;
+  color: #eee;
+}
+
+/* App Container */
+.app-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4caf50;
+  padding: 15px 20px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.dark-mode-toggle {
+  border: none;
+  padding: 10px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Search Bar */
+input[type="text"] {
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: 250px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
+}
+
+/* Filter Buttons */
+.filter-buttons button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: #45a049;
+}
+
+.filter-buttons button.active {
+  background-color: #357a38;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+}
+
+.add-task-button {
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
+
+/* Todo Table */
+.todo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.todo-table th,
+.todo-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+
+.todo-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.todo-table td {
+  background-color: #fff;
+}
+
+/* Dark Mode for Table */
+.dark .todo-table th {
+  background-color: #333;
+  color: #eee;
+}
+
+.dark .todo-table td {
+  background-color: #222;
+  color: #eee;
+}
+
+/* Action Buttons */
+.todo-table td button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.todo-table td button:hover {
+  background-color: #45a049;
+}
+
+.todo-table td button.delete {
+  background-color: #e53935;
+}
+
+.todo-table td button.delete:hover {
+  background-color: #d32f2f;
+}
+
+/* Dialog Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.dialog input,
+.dialog select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.dialog input:focus,
+.dialog select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.dialog button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.dialog button:hover {
+  background-color: #45a049;
+}
+
+.dialog button.cancel {
+  background-color: #e53935;
+}
+
+.dialog button.cancel:hover {
+  background-color: #d32f2f;
+}
