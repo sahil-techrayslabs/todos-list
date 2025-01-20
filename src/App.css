@@ -1,110 +1,167 @@
-/* General Styles */
-body, html {
+/* General Styling */
+body {
   margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+:root {
+  --bg-color: #f7f8fa; /* Light mode background */
+  --text-color: #333; /* Light mode text */
+  --primary-color: #4f46e5; /* Indigo */
+  --secondary-color: #e0e7ff; /* Light Indigo */
+  --button-hover: #4338ca; /* Darker Indigo */
+  --table-header-bg: #4f46e5;
+  --table-header-text: #fff;
+  --dialog-bg: #ffffff;
+
+  --dark-bg: #121212; /* Dark mode background */
+  --dark-text: #e4e4e4; /* Dark mode text */
+  --dark-secondary: #1f1f1f; /* Dark mode secondary */
+  --dark-table-header-bg: #282828;
+  --dark-dialog-bg: #1c1c1c;
 }
 
 .dark {
-  background-color: #121212;
-  color: #eee;
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+  --secondary-color: var(--dark-secondary);
+  --table-header-bg: var(--dark-table-header-bg);
+  --dialog-bg: var(--dark-dialog-bg);
 }
 
 /* App Container */
 .app-container {
-  width: 100%;
+  max-width: 960vh;
+  margin: 0 auto;
   padding: 20px;
-  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* border-radius: 10px; */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   height: 100vh;
 }
 
-/* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4caf50;
-  padding: 15px 20px;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.header-actions {
-  display: flex;
-  gap: 15px;
+header h1 {
+  font-size: 2rem;
+  margin: 0;
 }
 
-.dark-mode-toggle {
+/* Buttons */
+button {
+  padding: 10px 15px;
   border: none;
-  padding: 10px;
-  background: transparent;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 1.5rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
+/* Add Task Button */
+.add-task-button {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--button-hover);
+  color: #fff;
 }
 
 /* Search Bar */
-input[type="text"] {
-  border: 1px solid #ddd;
-  border-radius: 50px;
-  padding: 10px 20px;
-  width: 250px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  border-color: #4caf50;
-  box-shadow: 0 0 5px #4caf50;
-}
-
-/* Filter Buttons */
-.filter-buttons button {
-  padding: 10px 15px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 14px;
-  margin: 0 5px;
-  transition: all 0.3s ease;
-}
-
-.filter-buttons button:hover {
-  background-color: #45a049;
-}
-
-.filter-buttons button.active {
-  background-color: #357a38;
-}
-
-/* Main Content */
-main {
-  padding: 20px;
-}
-
-.add-task-button {
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 20px;
-  padding: 12px 20px;
-  background-color: #4caf50;
-  color: white;
+}
+
+.header-actions input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  flex: 1;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.header-actions input:focus {
+  outline: none;
+  border-color: var(--button-hover);
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.dropdown-button:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--bg-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px 0;
+  z-index: 1000;
+  min-width: 200px;
+  right: 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content button {
+  background-color: transparent;
   border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  color: var(--text-color);
+  text-align: left;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1rem;
 }
 
-.add-task-button:hover {
-  background-color: #45a049;
+.dropdown-content button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
-/* Todo Table */
+/* Table */
 .todo-table {
   width: 100%;
   border-collapse: collapse;
@@ -113,57 +170,46 @@ main {
 
 .todo-table th,
 .todo-table td {
-  border: 1px solid #ddd;
-  padding: 15px;
   text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 .todo-table th {
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+  position: sticky;
+  top: 0;
 }
 
 .todo-table td {
-  background-color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Dark Mode for Table */
-.dark .todo-table th {
-  background-color: #333;
-  color: #eee;
+.todo-table td .action-menu {
+  position: absolute;
+  background-color: var(--bg-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
 }
 
-.dark .todo-table td {
-  background-color: #222;
-  color: #eee;
+.todo-table td .action-button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Action Buttons */
-.todo-table td button {
-  padding: 8px 15px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-
-.todo-table td button:hover {
-  background-color: #45a049;
-}
-
-.todo-table td button.delete {
-  background-color: #e53935;
-}
-
-.todo-table td button.delete:hover {
-  background-color: #d32f2f;
-}
-
-/* Dialog Styles */
+/* Dialog Overlays */
 .dialog-overlay {
   position: fixed;
   top: 0;
@@ -172,54 +218,64 @@ main {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
 .dialog {
-  background-color: white;
+  background-color: var(--dialog-bg);
+  color: var(--text-color);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dialog h2 {
+  margin-top: 0;
 }
 
 .dialog input,
-.dialog select {
+.dialog select,
+.dialog button {
+  margin-bottom: 10px;
   width: 100%;
-  margin-bottom: 15px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
-  font-size: 14px;
-}
-
-.dialog input:focus,
-.dialog select:focus {
-  outline: none;
-  border-color: #4caf50;
+  font-size: 1rem;
 }
 
 .dialog button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .dialog button:hover {
-  background-color: #45a049;
+  background-color: var(--button-hover);
 }
 
-.dialog button.cancel {
-  background-color: #e53935;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+  }
 
-.dialog button.cancel:hover {
-  background-color: #d32f2f;
+  .header-actions input {
+    margin-right: 0;
+    margin-bottom: 10px;
+    flex: unset;
+  }
+
+  .todo-table th,
+  .todo-table td {
+    font-size: 0.9rem;
+  }
+
+  .dialog {
+    padding: 15px;
+  }
 }
